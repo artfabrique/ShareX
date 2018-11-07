@@ -609,6 +609,17 @@ namespace ShareX.UploadersLib
 
             #endregion ownCloud / Nextcloud
 
+            #region PutWebDav
+
+            txtPutWebDavHost.Text = Config.PutWebDavHost;
+            nudPutWebDavPort.Value = Config.PutWebDavPort;
+            txtPutWebDavUsername.Text = Config.PutWebDavUsername;
+            txtPutWebDavPassword.Text = Config.PutWebDavPassword;
+            txtPutWebDavDirectory.Text = Config.PutWebDavDirectory;
+            txtPutWebDavBaseURL.Text = Config.PutWebDavBaseURL;
+            
+            #endregion PutWebDav
+
             #region MediaFire
 
             txtMediaFireEmail.Text = Config.MediaFireUsername;
@@ -1711,6 +1722,40 @@ namespace ShareX.UploadersLib
         }
 
         #endregion FTP
+
+        #region PutWebDav
+
+        private void txtPutWebDavHost_TextChanged(object sender, EventArgs e)
+        {
+            Config.PutWebDavHost = txtPutWebDavHost.Text;
+        }
+
+        private void txtPutWebDavPort_ValueChanged(object sender, EventArgs e)
+        {
+            Config.PutWebDavPort = (int)nudPutWebDavPort.Value;
+        }
+
+        private void txtPutWebDavUsername_TextChanged(object sender, EventArgs e)
+        {
+            Config.PutWebDavUsername = txtPutWebDavUsername.Text;
+        }
+
+        private void txtPutWebDavPassword_TextChanged(object sender, EventArgs e)
+        {
+            Config.PutWebDavPassword = txtPutWebDavPassword.Text;
+        }
+
+        private void txtPutWebDavDirectory_TextChanged(object sender, EventArgs e)
+        {
+            Config.PutWebDavDirectory = txtPutWebDavDirectory.Text;
+        }
+
+        private void txtPutWebDavBaseURL_TextChanged(object sender, EventArgs e)
+        {
+            Config.PutWebDavBaseURL = txtPutWebDavBaseURL.Text;
+        }
+
+        #endregion PutWebDav
 
         #region Dropbox
 

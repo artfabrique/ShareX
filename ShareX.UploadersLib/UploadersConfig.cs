@@ -178,6 +178,18 @@ namespace ShareX.UploadersLib
 
         #endregion FTP
 
+        #region PutWebDav
+
+        public string PutWebDavHost = "";
+        public int PutWebDavPort = 443;
+        public string PutWebDavUsername = "";
+        public string PutWebDavPassword = "";
+        public string PutWebDavDirectory = "/";
+        public bool PutWebDavCreateShare = true;
+        public string PutWebDavBaseURL = "";
+
+        #endregion PutWebDav
+
         #region OneDrive
 
         public OAuth2Info OneDriveV2OAuth2Info = null;

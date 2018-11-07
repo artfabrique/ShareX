@@ -85,6 +85,8 @@ namespace ShareX.UploadersLib
         Dropbox,
         [Description("FTP")]
         FTP,
+        [Description("PutWebDav")]
+        PutWebDav,
         [Description("OneDrive")]
         OneDrive,
         [Description("Google Drive")]

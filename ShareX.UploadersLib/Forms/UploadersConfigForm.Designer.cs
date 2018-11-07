@@ -574,6 +574,18 @@ namespace ShareX.UploadersLib
             this.nudEmailSmtpPort = new System.Windows.Forms.NumericUpDown();
             this.lblEmailSmtpPort = new System.Windows.Forms.Label();
             this.txtEmailDefaultSubject = new System.Windows.Forms.TextBox();
+            this.tpPutWebDav = new System.Windows.Forms.TabPage();
+            this.txtPutWebDavBaseURL = new System.Windows.Forms.TextBox();
+            this.lblPutWebDavBaseURL = new System.Windows.Forms.Label();
+            this.nudPutWebDavPort = new System.Windows.Forms.NumericUpDown();
+            this.lblPutWebDavPort = new System.Windows.Forms.Label();
+            this.txtPutWebDavDirectory = new System.Windows.Forms.TextBox();
+            this.txtPutWebDavPassword = new System.Windows.Forms.TextBox();
+            this.txtPutWebDavUsername = new System.Windows.Forms.TextBox();
+            this.txtPutWebDavHost = new System.Windows.Forms.TextBox();
+            this.lblPutWebDavPassword = new System.Windows.Forms.Label();
+            this.lblPutWebDavUsername = new System.Windows.Forms.Label();
+            this.lblPutWebDavHost = new System.Windows.Forms.Label();
             this.btnCopyShowFiles = new System.Windows.Forms.Button();
             this.tpTextUploaders = new System.Windows.Forms.TabPage();
             this.tcTextUploaders = new System.Windows.Forms.TabControl();
@@ -704,6 +716,7 @@ namespace ShareX.UploadersLib
             this.lblWidthHint = new System.Windows.Forms.Label();
             this.ttlvMain = new ShareX.HelpersLib.TabToListView();
             this.actRapidShareAccountType = new ShareX.UploadersLib.AccountTypeControl();
+            this.lblPutWebDavDirectory = new System.Windows.Forms.Label();
             this.tpOtherUploaders.SuspendLayout();
             this.tcOtherUploaders.SuspendLayout();
             this.tpTwitter.SuspendLayout();
@@ -773,6 +786,8 @@ namespace ShareX.UploadersLib
             this.tpSharedFolder.SuspendLayout();
             this.tpEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEmailSmtpPort)).BeginInit();
+            this.tpPutWebDav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPutWebDavPort)).BeginInit();
             this.tpTextUploaders.SuspendLayout();
             this.tcTextUploaders.SuspendLayout();
             this.tpPastebin.SuspendLayout();
@@ -1982,6 +1997,7 @@ namespace ShareX.UploadersLib
             this.tcFileUploaders.Controls.Add(this.tpYouTube);
             this.tcFileUploaders.Controls.Add(this.tpSharedFolder);
             this.tcFileUploaders.Controls.Add(this.tpEmail);
+            this.tcFileUploaders.Controls.Add(this.tpPutWebDav);
             resources.ApplyResources(this.tcFileUploaders, "tcFileUploaders");
             this.tcFileUploaders.Multiline = true;
             this.tcFileUploaders.Name = "tcFileUploaders";
@@ -4642,6 +4658,95 @@ namespace ShareX.UploadersLib
             this.txtEmailDefaultSubject.Name = "txtEmailDefaultSubject";
             this.txtEmailDefaultSubject.TextChanged += new System.EventHandler(this.txtDefaultSubject_TextChanged);
             // 
+            // tpPutWebDav
+            // 
+            this.tpPutWebDav.BackColor = System.Drawing.SystemColors.Window;
+            this.tpPutWebDav.Controls.Add(this.lblPutWebDavDirectory);
+            this.tpPutWebDav.Controls.Add(this.txtPutWebDavBaseURL);
+            this.tpPutWebDav.Controls.Add(this.lblPutWebDavBaseURL);
+            this.tpPutWebDav.Controls.Add(this.nudPutWebDavPort);
+            this.tpPutWebDav.Controls.Add(this.lblPutWebDavPort);
+            this.tpPutWebDav.Controls.Add(this.txtPutWebDavDirectory);
+            this.tpPutWebDav.Controls.Add(this.txtPutWebDavPassword);
+            this.tpPutWebDav.Controls.Add(this.txtPutWebDavUsername);
+            this.tpPutWebDav.Controls.Add(this.txtPutWebDavHost);
+            this.tpPutWebDav.Controls.Add(this.lblPutWebDavPassword);
+            this.tpPutWebDav.Controls.Add(this.lblPutWebDavUsername);
+            this.tpPutWebDav.Controls.Add(this.lblPutWebDavHost);
+            resources.ApplyResources(this.tpPutWebDav, "tpPutWebDav");
+            this.tpPutWebDav.Name = "tpPutWebDav";
+            // 
+            // txtPutWebDavBaseURL
+            // 
+            resources.ApplyResources(this.txtPutWebDavBaseURL, "txtPutWebDavBaseURL");
+            this.txtPutWebDavBaseURL.Name = "txtPutWebDavBaseURL";
+            // 
+            // lblPutWebDavBaseURL
+            // 
+            resources.ApplyResources(this.lblPutWebDavBaseURL, "lblPutWebDavBaseURL");
+            this.lblPutWebDavBaseURL.Name = "lblPutWebDavBaseURL";
+            // 
+            // nudPutWebDavPort
+            // 
+            resources.ApplyResources(this.nudPutWebDavPort, "nudPutWebDavPort");
+            this.nudPutWebDavPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudPutWebDavPort.Name = "nudPutWebDavPort";
+            this.nudPutWebDavPort.Value = new decimal(new int[] {
+            443,
+            0,
+            0,
+            0});
+            this.nudPutWebDavPort.ValueChanged += new System.EventHandler(this.txtPutWebDavPort_ValueChanged);
+            // 
+            // lblPutWebDavPort
+            // 
+            resources.ApplyResources(this.lblPutWebDavPort, "lblPutWebDavPort");
+            this.lblPutWebDavPort.Name = "lblPutWebDavPort";
+            // 
+            // txtPutWebDavDirectory
+            // 
+            resources.ApplyResources(this.txtPutWebDavDirectory, "txtPutWebDavDirectory");
+            this.txtPutWebDavDirectory.Name = "txtPutWebDavDirectory";
+            this.txtPutWebDavDirectory.TextChanged += new System.EventHandler(this.txtPutWebDavDirectory_TextChanged);
+            // 
+            // txtPutWebDavPassword
+            // 
+            resources.ApplyResources(this.txtPutWebDavPassword, "txtPutWebDavPassword");
+            this.txtPutWebDavPassword.Name = "txtPutWebDavPassword";
+            this.txtPutWebDavPassword.UseSystemPasswordChar = true;
+            this.txtPutWebDavPassword.TextChanged += new System.EventHandler(this.txtPutWebDavPassword_TextChanged);
+            // 
+            // txtPutWebDavUsername
+            // 
+            resources.ApplyResources(this.txtPutWebDavUsername, "txtPutWebDavUsername");
+            this.txtPutWebDavUsername.Name = "txtPutWebDavUsername";
+            this.txtPutWebDavUsername.TextChanged += new System.EventHandler(this.txtPutWebDavUsername_TextChanged);
+            // 
+            // txtPutWebDavHost
+            // 
+            resources.ApplyResources(this.txtPutWebDavHost, "txtPutWebDavHost");
+            this.txtPutWebDavHost.Name = "txtPutWebDavHost";
+            this.txtPutWebDavHost.TextChanged += new System.EventHandler(this.txtPutWebDavHost_TextChanged);
+            // 
+            // lblPutWebDavPassword
+            // 
+            resources.ApplyResources(this.lblPutWebDavPassword, "lblPutWebDavPassword");
+            this.lblPutWebDavPassword.Name = "lblPutWebDavPassword";
+            // 
+            // lblPutWebDavUsername
+            // 
+            resources.ApplyResources(this.lblPutWebDavUsername, "lblPutWebDavUsername");
+            this.lblPutWebDavUsername.Name = "lblPutWebDavUsername";
+            // 
+            // lblPutWebDavHost
+            // 
+            resources.ApplyResources(this.lblPutWebDavHost, "lblPutWebDavHost");
+            this.lblPutWebDavHost.Name = "lblPutWebDavHost";
+            // 
             // btnCopyShowFiles
             // 
             resources.ApplyResources(this.btnCopyShowFiles, "btnCopyShowFiles");
@@ -5578,6 +5683,11 @@ namespace ShareX.UploadersLib
             this.actRapidShareAccountType.Name = "actRapidShareAccountType";
             this.actRapidShareAccountType.SelectedAccountType = ShareX.UploadersLib.AccountType.Anonymous;
             // 
+            // lblPutWebDavDirectory
+            // 
+            resources.ApplyResources(this.lblPutWebDavDirectory, "lblPutWebDavDirectory");
+            this.lblPutWebDavDirectory.Name = "lblPutWebDavDirectory";
+            // 
             // UploadersConfigForm
             // 
             resources.ApplyResources(this, "$this");
@@ -5715,6 +5825,9 @@ namespace ShareX.UploadersLib
             this.tpEmail.ResumeLayout(false);
             this.tpEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEmailSmtpPort)).EndInit();
+            this.tpPutWebDav.ResumeLayout(false);
+            this.tpPutWebDav.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPutWebDavPort)).EndInit();
             this.tpTextUploaders.ResumeLayout(false);
             this.tcTextUploaders.ResumeLayout(false);
             this.tpPastebin.ResumeLayout(false);
@@ -6411,5 +6524,18 @@ namespace ShareX.UploadersLib
         private System.Windows.Forms.CheckBox cbGoogleCloudStorageStripExtensionText;
         private System.Windows.Forms.CheckBox cbGoogleCloudStorageStripExtensionVideo;
         private System.Windows.Forms.CheckBox cbGoogleCloudStorageStripExtensionImage;
+        private System.Windows.Forms.TextBox txtPutWebDavDirectory;
+        private System.Windows.Forms.TextBox txtPutWebDavPassword;
+        private System.Windows.Forms.TextBox txtPutWebDavUsername;
+        private System.Windows.Forms.TextBox txtPutWebDavHost;
+        private System.Windows.Forms.Label lblPutWebDavPassword;
+        private System.Windows.Forms.Label lblPutWebDavUsername;
+        private System.Windows.Forms.Label lblPutWebDavHost;
+        internal System.Windows.Forms.TabPage tpPutWebDav;
+        private System.Windows.Forms.TextBox txtPutWebDavBaseURL;
+        private System.Windows.Forms.Label lblPutWebDavBaseURL;
+        private System.Windows.Forms.NumericUpDown nudPutWebDavPort;
+        private System.Windows.Forms.Label lblPutWebDavPort;
+        private System.Windows.Forms.Label lblPutWebDavDirectory;
     }
 }
