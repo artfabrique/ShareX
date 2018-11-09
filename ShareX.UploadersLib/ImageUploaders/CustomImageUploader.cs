@@ -77,29 +77,58 @@ namespace ShareX.UploadersLib.ImageUploaders
 
         public override UploadResult Upload(Stream stream, string fileName)
         {
-            if (customUploader.RequestType != CustomUploaderRequestType.POST)
-            {
-                throw new Exception("'Request type' must be 'POST' when using custom image uploader.");
-            }
-
             CustomUploaderArgumentInput input = new CustomUploaderArgumentInput(fileName, "");
 
-            UploadResult result = SendRequestFile(customUploader.GetRequestURL(), stream, fileName, customUploader.GetFileFormName(),
-                customUploader.GetArguments(input), customUploader.GetHeaders(input), responseType: customUploader.ResponseType);
-
-            if (result.IsSuccess)
+            if (customUploader.RequestType == CustomUploaderRequestType.POST)
             {
-                try
-                {
-                    customUploader.ParseResponse(result);
-                }
-                catch (Exception e)
-                {
-                    Errors.Add(Resources.CustomFileUploader_Upload_Response_parse_failed_ + Environment.NewLine + e);
-                }
-            }
 
-            return result;
+
+                UploadResult result = SendRequestFile(customUploader.GetRequestURL(), stream, fileName, customUploader.GetFileFormName(),
+                    customUploader.GetArguments(input), customUploader.GetHeaders(input), responseType: customUploader.ResponseType);
+
+                if (result.IsSuccess)
+                {
+                    try
+                    {
+                        customUploader.ParseResponse(result);
+                    }
+                    catch (Exception e)
+                    {
+                        Errors.Add(Resources.CustomFileUploader_Upload_Response_parse_failed_ + Environment.NewLine + e);
+                    }
+                }
+
+                return result;
+            }
+            else if (customUploader.RequestType == CustomUploaderRequestType.PUT)
+            {
+                string response = SendRequest(HttpMethod.PUT, URLHelpers.CombineURL(customUploader.GetRequestURL(), fileName), stream, UploadHelpers.GetMimeType(fileName), null, customUploader.GetHeaders(input),null, customUploader.ResponseType);
+
+                UploadResult result = new UploadResult();
+                result.Response = response;
+                result.IsSuccess = true;
+                result.URL = URLHelpers.CombineURL(customUploader.URL, fileName);
+
+
+                if (result.IsSuccess)
+                {
+                    try
+                    {
+                        customUploader.ParseResponse(result);
+                    }
+                    catch (Exception e)
+                    {
+                        Errors.Add(Resources.CustomFileUploader_Upload_Response_parse_failed_ + Environment.NewLine + e);
+                    }
+                }
+
+                return result;
+
+            }
+            else
+            {
+                throw new Exception("'Request type' must be 'POST' or 'PUT' when using custom file uploader.");
+            }
         }
     }
 }
