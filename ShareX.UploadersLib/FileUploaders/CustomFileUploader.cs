@@ -105,13 +105,28 @@ namespace ShareX.UploadersLib.FileUploaders
             }
             else if (customUploader.RequestType == CustomUploaderRequestType.PUT)
             {
-                string response = SendRequest(HttpMethod.PUT, URLHelpers.CombineURL(customUploader.GetRequestURL(), fileName), stream, UploadHelpers.GetMimeType(fileName),null, customUploader.GetHeaders(input));
-                
+                string response = "";
                 UploadResult result = new UploadResult();
+
+                response = SendRequest(
+                    HttpMethod.PUT,
+                    URLHelpers.CombineURL(customUploader.GetRequestURL(), fileName),
+                    stream,
+                    UploadHelpers.GetMimeType(fileName), null,
+                    customUploader.GetHeaders(input), null,
+                    customUploader.ResponseType
+                );
                 result.Response = response;
                 result.IsSuccess = true;
                 result.URL = URLHelpers.CombineURL(customUploader.URL, fileName);
 
+                if (IsError)
+                {
+                    result.IsSuccess = false;
+                    result.URL = "";
+                    result.Response = null;
+                }
+                
                 if (result.IsSuccess)
                 {
                     try
